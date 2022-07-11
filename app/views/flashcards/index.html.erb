@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Flashcards</h1>
+
+<div id="flashcards">
+  <% @flashcards.each do |flashcard| %>
+    <%= render flashcard %>
+    <p>
+      <%= link_to "Show this flashcard", flashcard %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New flashcard", new_flashcard_path %>
