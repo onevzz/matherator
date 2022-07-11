@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Flashcards</h1>
 
 <div id="flashcards">
   <% @flashcards.each do |flashcard| %>
     <%= render flashcard %>
     <p>
-      <%= link_to "Show this flashcard", flashcard %>
+      <%= link_to "Show this Flashcard", flashcard, class:"btn btn-primary" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New flashcard", new_flashcard_path %>
+<%= link_to "New Flashcard", new_flashcard_path, class:"btn btn-success" %>

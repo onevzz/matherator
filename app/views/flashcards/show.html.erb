@@ -1,10 +1,44 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @flashcard %>
 
+<br>
+<h1>Preview</h1>
+<% round = 0 %>
+<% round_answer = 2 %>
+<% table = Hash.new(0) %>
+<% question = @flashcard.question + " " %>
+<% answer_str = @flashcard.answer + " " %>
+<% whole_array = answer_str.scan(/\$.*?(?=[^A-Za-z0-9\.])/) %>
+<% answer_str = answer_str.gsub(/[A-Za-z].*?(?=[^A-Za-z0-9\.])/, "") %>
+<% whole_array.each do |element| %>
+  <% element = element + " " %>
+  <% if element.include?(".") %> <% round = 2 %> <% end %>
+  <% variable = element.scan(/\$.*?(?=[^0-9])/) %>
+  <% min = element.scan(/(?<=min).*?(?=[^0-9\.])/) %>
+  <% max = element.scan(/(?<=max).*?(?=[^0-9\.])/) %>
+  <% table[variable[0]] = rand(min[0].to_f..max[0].to_f).round(round).to_s %>
+  <% round = 0 %>
+<% end %>
+<% table.each do |key, value| %>
+  <% question = question.gsub(key, value) %>
+  <% answer_str = answer_str.gsub(key, value) %>
+<% end %>
+<% answer = eval(answer_str).to_f.round(round_answer) %>
+<% if answer%1==0 %> <% answer=answer.to_i %> <% end %>
 <div>
-  <%= link_to "Edit this flashcard", edit_flashcard_path(@flashcard) %> |
-  <%= link_to "Back to flashcards", flashcards_path %>
+  <p>
+    <%= question %>
+  </p>
+  <p>
+  <strong>Answer:</strong>
+    <%= answer_str.to_s + " = " + answer.to_s + " " + @flashcard.unit %>
+  </p>
+</div>
 
-  <%= button_to "Destroy this flashcard", @flashcard, method: :delete %>
+<br>
+<div>
+  <%= link_to "Refresh", @flashcard, class:"btn btn-primary" %> |
+  <%= link_to "Destroy this Flashcard", @flashcard, method: :delete, class:"btn btn-danger" %> |
+  <%= link_to "Edit this Flashcard", edit_flashcard_path(@flashcard), class:"btn btn-warning" %> |
+  <%= link_to "Back to Flashcards", flashcards_path, class:"btn btn-secondary" %>
 </div>
