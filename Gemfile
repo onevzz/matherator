@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "3.0.4"
 gem "rails", "~> 7.0.3"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
@@ -10,7 +10,9 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
+gem 'prawn', '~> 2.4'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'pg', '~> 1.4', '>= 1.4.2'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
