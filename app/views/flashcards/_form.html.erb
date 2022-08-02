@@ -13,25 +13,25 @@
 
   <div>
     <%= form.label :code, style: "display: block" %>
-    <%= form.text_field :code %>
+    <%= form.text_field :code, class:"form-control" %>
   </div>
 
   <div>
     <%= form.label :question, style: "display: block" %>
-    <%= form.text_field :question %>
+    <%= form.text_area :question, class:"form-control", :rows=>2 %>
   </div>
 
   <div>
     <%= form.label :answer, style: "display: block" %>
-    <%= form.text_field :answer %>
+    <%= form.text_field :answer, class:"form-control" %>
   </div>
 
   <div>
     <%= form.label :unit, style: "display: block" %>
-    <%= form.text_field :unit %>
-  </div>
+    <%= form.text_field :unit, class:"form-control" %>
+  </div></br>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success" %>
   </div>
 <% end %>

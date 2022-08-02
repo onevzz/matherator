@@ -1,10 +1,6 @@
 <h1>Editing deck</h1>
-
-<%= render "form", deck: @deck %>
-
-<br>
-
+<%= render "form", deck: @deck %><br>
 <div>
-  <%= link_to "Show this deck", @deck %> |
-  <%= link_to "Back to decks", decks_path %>
+  <%= link_to "Show this Deck", @deck, class:"btn btn-primary" %> |
+  <%= link_to "Back to Decks", decks_path, class:"btn btn-secondary" %>
 </div>

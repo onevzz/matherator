@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Decks</h1>
 
 <div id="decks">
   <% @decks.each do |deck| %>
     <%= render deck %>
     <p>
-      <%= link_to "Show this deck", deck %>
+      <%= link_to "Show this Deck", deck, class:"btn btn-primary" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New deck", new_deck_path %>
+<%= link_to "New Deck", new_deck_path, class:"btn btn-success" %>
