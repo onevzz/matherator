@@ -1,4 +1,3 @@
-<p style="color: green"><%= notice %></p>
 <%= render @flashcard %>
 
 <br>
@@ -37,8 +36,8 @@
 
 <br>
 <div>
+  <%= button_to "Destroy this Flashcard", @flashcard, method: :delete, class:"btn btn-danger" %></br>
   <%= link_to "Refresh", @flashcard, class:"btn btn-primary" %> |
-  <%= link_to "Destroy this Flashcard", @flashcard, method: :delete, class:"btn btn-danger" %> |
   <%= link_to "Edit this Flashcard", edit_flashcard_path(@flashcard), class:"btn btn-warning" %> |
   <%= link_to "Back to Flashcards", flashcards_path, class:"btn btn-secondary" %>
 </div>

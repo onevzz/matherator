@@ -1,8 +1,7 @@
-<p style="color: green"><%= notice %></p>
 <%= render @deck %>
 
 <div>
-  <%= link_to "Destroy this Deck", @deck, method: :delete, class:"btn btn-danger" %> |
+  <%= button_to "Destroy this Deck", @deck, method: :delete, class:"btn btn-danger" %></br>
   <%= link_to "Edit this Deck", edit_deck_path(@deck), class:"btn btn-warning" %> |
   <%= link_to "Back to Decks", decks_path, class:"btn btn-secondary" %>
 </div>
