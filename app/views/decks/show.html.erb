@@ -1,7 +1,61 @@
+<h1><%= @deck.code %></h1></br>
 <%= render @deck %>
-
+<br>
 <div>
   <%= button_to "Destroy this Deck", @deck, :method => :delete, class:"btn btn-danger" %></br>
+<%= link_to "Download PDF", download_path(:id => @deck), class:"btn btn-primary" %> |
+  <%= link_to "Refresh", @deck, class:"btn btn-primary" %> |
   <%= link_to "Edit this Deck", edit_deck_path(@deck), class:"btn btn-warning" %> |
   <%= link_to "Back to Decks", decks_path, class:"btn btn-secondary" %>
 </div>
+
+<br><br>
+<h1>Preview</h1></br>
+<% index = 1 %>
+<% card_array = @deck.content.split(', ') %>
+<% card_array.each do |card| %>
+  <% card_front = card.gsub(/\(.*\)/, "") %>
+  <% card_back = card.gsub(/^.*\(/, "").gsub(/\)/, "").to_i %>
+  <% @flashcards.each do |flashcard| %>
+    <% if flashcard.user == current_user && flashcard.code == card_front %>
+      <% card_back.times do %>
+
+<% round = 0 %>
+<% round_answer = 2 %>
+<% table = Hash.new(0) %>
+<% question = flashcard.question + " " %>
+<% answer_str = flashcard.answer + " " %>
+<% whole_array = answer_str.scan(/\$.*?(?=[^A-Za-z0-9\.])/) %>
+<% answer_str = answer_str.gsub(/[A-Za-z].*?(?=[^A-Za-z0-9\.])/, "") %>
+<% whole_array.each do |element| %>
+  <% element = element + " " %>
+  <% if element.include?(".") %> <% round = 2 %> <% end %>
+  <% variable = element.scan(/\$.*?(?=[^0-9])/) %>
+  <% min = element.scan(/(?<=min).*?(?=[^0-9\.])/) %>
+  <% max = element.scan(/(?<=max).*?(?=[^0-9\.])/) %>
+  <% table[variable[0]] = rand(min[0].to_f..max[0].to_f).round(round).to_s %>
+  <% round = 0 %>
+<% end %>
+<% table.each do |key, value| %>
+  <% question = question.gsub(key, value) %>
+  <% answer_str = answer_str.gsub(key, value) %>
+<% end %>
+<% answer = eval(answer_str).to_f.round(round_answer) %>
+<% if answer%1==0 %> <% answer=answer.to_i %> <% end %>
+
+<div>
+  <p>
+    <%= index.to_s + ") " + question %>
+  </p>
+  <p>
+  <strong>Answer:</strong>
+    <%= answer_str.to_s + " = " + answer.to_s + " " + flashcard.unit %>
+  </p>
+</div>
+
+<% index = index + 1 %>
+
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
