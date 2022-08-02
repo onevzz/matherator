@@ -2,10 +2,12 @@
 
 <div id="flashcards">
   <% @flashcards.each do |flashcard| %>
+    <% if flashcard.user == current_user %>
     <%= render flashcard %>
     <p>
       <%= link_to "Show this Flashcard", flashcard, class:"btn btn-primary" %>
     </p>
+    <% end %>
   <% end %>
 </div>
 

@@ -1,6 +1,7 @@
 class FlashcardsController < ApplicationController
   before_action :set_flashcard, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :correct_user, only:[:show, :edit, :update, :destroy]
 
   # GET /flashcards or /flashcards.json
   def index
@@ -13,7 +14,8 @@ class FlashcardsController < ApplicationController
 
   # GET /flashcards/new
   def new
-    @flashcard = Flashcard.new
+    #@flashcard = Flashcard.new
+    @flashcard = current_user.flashcards.build
   end
 
   # GET /flashcards/1/edit
@@ -22,7 +24,8 @@ class FlashcardsController < ApplicationController
 
   # POST /flashcards or /flashcards.json
   def create
-    @flashcard = Flashcard.new(flashcard_params)
+    #@flashcard = Flashcard.new(flashcard_params)
+    @flashcard = current_user.flashcards.build(flashcard_params)
 
     respond_to do |format|
       if @flashcard.save
@@ -56,6 +59,11 @@ class FlashcardsController < ApplicationController
       format.html { redirect_to flashcards_url, notice: "Flashcard was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user
+    @flashcard = current_user.flashcards.find_by(:id => params[:id])
+    redirect_to flashcards_path, notice:"Not Authorized to access this flashcard" if @flashcard.nil?
   end
 
   private

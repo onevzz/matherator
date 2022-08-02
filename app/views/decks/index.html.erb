@@ -2,10 +2,12 @@
 
 <div id="decks">
   <% @decks.each do |deck| %>
+    <% if deck.user == current_user %>
     <%= render deck %>
     <p>
       <%= link_to "Show this Deck", deck, class:"btn btn-primary" %>
     </p>
+    <% end %>
   <% end %>
 </div>
 
