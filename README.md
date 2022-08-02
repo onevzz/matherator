@@ -1,5 +1,7 @@
 # Matherator
 
+![matherator](/app/assets/images/matherator.png)
+
 ## About
 
 Matherator is a web-application based on Ruby on Rails that allows the user to generate basic mathematical problems instantly.
