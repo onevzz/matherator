@@ -1,24 +1,18 @@
-# README
+# Matherator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+Matherator is a web-application based on Ruby on Rails that allows you to generate basic mathematical problems instantly.
+Given that the user had supplied the application with the necessary templates and equations.
 
-* Ruby version
+## Meet The Team
 
-* System dependencies
+* Codename: G06-Matherator
+* Penek Suksuda
+* Kornpong Chavitruthaigul
+* Phubet Pongcharoen
 
-* Configuration
+## Associations
 
-* Database creation
+ESMTE - Benchamarachuthit Chanthaburi School Thailand
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
