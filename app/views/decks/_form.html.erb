@@ -19,6 +19,10 @@
   <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content, class:"form-control", :rows=>2 %>
+  </div>
+
+  <div>
+    <%= form.number_field :user_id, class:"form-control", value:current_user.id, :id => :deck_user_id, :type => :hidden %>
   </div></br>
 
   <div>
