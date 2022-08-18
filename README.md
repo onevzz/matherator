@@ -8,6 +8,11 @@
 * Kornpong Chavitruthaigul
 * Phubet Pongcharoen
 
+## Project Advisor
+* Phittaya Patiko
+* Waraporn Patiko
+* Vicha Thirajitanon
+
 ## Associations
 
 ESMTE - Benchamarachuthit Chanthaburi School Thailand
