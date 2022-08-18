@@ -8,7 +8,7 @@
 * Kornpong Chavitruthaigul
 * Phubet Pongcharoen
 
-## Project Advisor
+## Project Advisors
 * Phittaya Patiko
 * Waraporn Patiko
 * Vicha Thirajitanon
