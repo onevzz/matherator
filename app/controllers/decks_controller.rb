@@ -17,10 +17,12 @@ class DecksController < ApplicationController
   def new
     #@deck = Deck.new
     @deck = current_user.decks.build
+    @flashcards = Flashcard.all
   end
 
   # GET /decks/1/edit
   def edit
+    @flashcards = Flashcard.all
   end
 
   # POST /decks or /decks.json

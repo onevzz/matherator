@@ -27,11 +27,11 @@
 <% if answer%1==0 %> <% answer=answer.to_i %> <% end %>
 <div>
   <p>
-    <%= question %>
+  <%= question %>
   </p>
   <p>
   <strong>Answer:</strong>
-    <%= answer_str.to_s + " = " + answer.to_s + " " + @flashcard.unit %>
+  <%= answer_str.to_s + " = " + answer.to_s + " " + @flashcard.unit %>
   </p>
 </div>
 
